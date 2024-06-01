@@ -8,7 +8,7 @@ $(document).ready(function(){
         var f_other = $("#f_other").val();
         $.ajax({
             type: "POST",
-			url: "http://localhost/book_crt.php",
+			url: "http://localhost/backend/book_crt.php",
 			datatype: "json",
 			data:{
 				date: f_date,
@@ -21,7 +21,7 @@ $(document).ready(function(){
 			contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 			success: function(data) {
                 console.log(data);
-                $("f_main").css('display','none');
+                $("#f_main").css('display','none');
                 if(data == "successful"){
                     console.log("ok");
                     $("#success").css('display','block');

@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="../js/book_crt.js"></script>
 </head>
 
 <body id="page-top">
@@ -28,13 +32,11 @@
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
-            <div id="content">
-                <div class="container-fluid">
-                    <h3 class="text-dark mb-4" style="margin-top: 10px;">訂位</h3>
-                    <div class="card shadow"></div>
-                </div>
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4" style="margin-top: 10px;">訂位</h3>
+                <div class="card shadow"></div>
             </div>
-            <div>
+            <div style="display: none;">
                 <main></main>
                 <footer>
                     <div style="background: #ffffff;width: 100%;height: 100%;padding: 3px;position: relative;overflow: visible;display: block;">
@@ -82,14 +84,14 @@
                     </div>
                 </footer>
             </div>
-            <div>
+            <div id="f_main">
                 <main>
                     <div>
                         <section style="margin: 20px;background: #ffffff;padding: 10px;">
                             <div class="container" style="color: rgb(255,255,255);">
                                 <div class="row" style="margin: 10px;">
                                     <div class="col">
-                                        <h1 style="color: rgb(0,0,0);">確認訂位資訊</h1>
+                                        <h1 style="color: rgb(0,0,0);">請輸入訂位資訊</h1>
                                     </div>
                                 </div>
                                 <div class="row" style="padding: 10px;color: rgb(0,0,0);">
@@ -97,7 +99,7 @@
                                         <p style="color: rgb(0,0,0);">用餐人數</p>
                                     </div>
                                     <div class="col">
-                                        <p style="color: rgb(0,0,0);">1</p>
+                                        <input id="f_people" type="number" value="1">
                                     </div>
                                 </div>
                                 <div class="row" style="padding: 10px;color: rgb(0,0,0);">
@@ -105,7 +107,7 @@
                                         <p>用餐日期</p>
                                     </div>
                                     <div class="col">
-                                        <p>2024/06/02</p>
+                                        <input id="f_date" type="date">
                                     </div>
                                 </div>
                                 <div class="row" style="padding: 10px;color: rgb(0,0,0);">
@@ -113,10 +115,10 @@
                                         <p>用餐時間</p>
                                     </div>
                                     <div class="col">
-                                        <p>13:30</p>
+                                        <input id="f_time" type="time">
                                     </div>
                                 </div>
-                                <div class="row" style="padding: 10px;">
+                                <div style="display: none;"class="row" style="padding: 10px;">
                                     <div class="col d-flex justify-content-end"><button class="btn btn-primary text-start d-flex d-sm-flex justify-content-center justify-content-sm-center" type="button" style="width: 100px;height: 40px;background: rgb(58,58,58);font-weight: bold;border-width: 0.1px;border-color: rgb(255,0,0);">我要修改</button></div>
                                 </div>
                             </div>
@@ -132,27 +134,27 @@
                                     <div class="col d-flex align-items-sm-center">
                                         <p>訂位人姓名</p>
                                     </div>
-                                    <div class="col d-flex align-items-sm-center"><input type="text" style="width: 150px;height: 30px;border-style: solid;"></div>
+                                    <div class="col d-flex align-items-sm-center"><input id="f_name" type="text" style="width: 150px;height: 30px;border-style: solid;"></div>
                                 </div>
                                 <div class="row" style="padding: 10px;color: rgb(0,0,0);">
                                     <div class="col">
                                         <p>訂位人電話</p>
                                     </div>
-                                    <div class="col d-flex align-items-sm-center"><input type="text" style="width: 150px;height: 30px;border-style: solid;"></div>
+                                    <div class="col d-flex align-items-sm-center"><input id="f_phone" type="text" style="width: 150px;height: 30px;border-style: solid;"></div>
                                 </div>
                                 <div class="row" style="padding: 10px;color: rgb(0,0,0);">
                                     <div class="col">
                                         <p>備註</p>
                                     </div>
-                                    <div class="col d-flex align-items-sm-center"><input type="text" style="height: 200px;width: 150px;border-style: solid;"></div>
+                                    <div class="col d-flex align-items-sm-center"><input id="f_other" type="text" style="height: 200px;width: 150px;border-style: solid;"></div>
                                 </div>
                             </div>
                         </section>
-                        <section class="d-flex justify-content-center" style="margin: 20px;background: #ffffff;"><button class="btn btn-primary text-start d-flex d-sm-flex justify-content-center justify-content-sm-center" type="button" style="width: 90%;height: 70px;background: #4a4a4a;font-size: 40px;font-weight: bold;">完成訂位</button></section>
+                        <section class="d-flex justify-content-center" style="margin: 20px;background: #ffffff;"><button id="book_crt" class="btn btn-primary text-start d-flex d-sm-flex justify-content-center justify-content-sm-center" type="button" style="width: 90%;height: 70px;background: #4a4a4a;font-size: 40px;font-weight: bold;">完成訂位</button></section>
                     </div>
                 </main>
             </div>
-            <div>
+            <div style="display: none;" id="success">
                 <main>
                     <div>
                         <section class="d-flex justify-content-sm-center align-items-sm-center" style="margin: 20px;background: #ffffff;padding: 10px;text-align: center;color: rgb(131,132,135);">
@@ -165,7 +167,7 @@
                     </div>
                 </main>
             </div>
-            <div>
+            <div style="display: none;" id="fail">
                 <main>
                     <div>
                         <section class="d-flex justify-content-sm-center align-items-sm-center" style="margin: 20px;background: #ffffff;padding: 10px;text-align: center;border-color: rgb(99,99,99);">
@@ -185,9 +187,6 @@
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>
