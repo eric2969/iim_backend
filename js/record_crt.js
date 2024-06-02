@@ -11,6 +11,10 @@ $(document).ready(function(){
         var m_date = new Date($("#m_date").val());
         var m_price = $("#m_input").val();
         $("#m_input").val("");
+        if(m_price == ""){
+            alert("請輸入金額!");
+            return 0;
+        }
         var hour = obj_Date.getHours();
         var minute = obj_Date.getMinutes();
         let strTime = `${hour}:${minute}`;
