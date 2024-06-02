@@ -9,6 +9,14 @@ $(document).ready(function(){
         var f_phone = $("#f_phone").val();
         var f_people = $("#f_people").val();
         var f_other = $("#f_other").val();
+        if(f_name == "" || f_people == ""){
+            alert("請輸入個人資料!");
+            return 0;
+        }
+        else if(f_date == "" || f_time == ""){
+            alert("請輸入訂位資訊!");
+            return 0;
+        }
         $.ajax({
             type: "POST",
 			url: "http://localhost/backend/book_crt.php",
