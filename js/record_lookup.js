@@ -25,11 +25,9 @@ $(document).ready(function(){
 		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 		success: function(data) {
             var jdata = JSON.parse(data);
-            $("#p_day").text("$" + jdata['date']);
-            $("#p_week").text("$" + jdata['week']);
-            $("#p_month").text("$" + jdata['month']);
-            var jdata = JSON.parse(data);
-            console.log(jdata);
+            $("#p_day").text("$" + (jdata['date']?jdata['date']:"0"));
+            $("#p_week").text("$" + (jdata['week']?jdata['week']:"0"));
+            $("#p_month").text("$" + (jdata['month']?jdata['month']:"0"));
         },
         error: function(jqXHR) {
             alert("error" + jqXHR.status);
