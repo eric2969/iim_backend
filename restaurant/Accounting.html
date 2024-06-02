@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Restaurant</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-Dark-icons.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="../js/record_crt.js"></script>
+</head>
+
+<body>
+    <header style="padding: 10px;margin: 10px;">
+        <h1 style="font-size: 30px;">記帳</h1>
+    </header>
+    <main>
+        <div>
+            <div class="container">
+                <h1 style="padding: 10px;margin: 10px;">Date: 2024/06/01</h1>
+            </div>
+            <div class="card shadow">
+                <div class="card-header d-flex flex-row justify-content-sm-start py-3">
+                    <div class="row" style="margin: 10px;">
+                        <div class="col d-flex d-sm-flex justify-content-sm-center align-items-sm-center">
+                            <p class="text-primary d-flex align-items-center m-0 fw-bold" style="font-size: 20px;">金額&nbsp; &nbsp;</p>
+                        </div>
+                        <div class="col d-flex d-sm-flex justify-content-sm-center align-items-sm-center"><input id="m_input" type="number" style="height: 40px;width: 150px;"></div>
+                        <div class="col d-flex d-sm-flex justify-content-end align-items-center justify-content-sm-center align-items-sm-center"><button class="record_crt btn btn-primary" type="button" style="margin: 10px;">Enter</button></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                        <table class="table my-0" id="dataTable">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                <tr class="flex-fill" style="text-align: left;font-size: 18px;">
+                                    <td class="text-center" style="width: 110px;"><button onclick="append(7)" class="btn btn-primary" type="button">7</button></td>
+                                    <td class="text-center" style="width: 110px;"><button onclick="append(8)" class="btn btn-primary" type="button">8</button></td>
+                                    <td class="text-center" style="width: 110px;"><button onclick="append(9)" class="btn btn-primary" type="button">9</button></td>
+                                </tr>
+                                <tr class="flex-fill" style="text-align: left;font-size: 18px;">
+                                    <td class="text-center" style="width: 110px;"><button onclick="append(4)" class="btn btn-primary" type="button">4</button></td>
+                                    <td class="text-center" style="width: 110px;"><button onclick="append(5)" class="btn btn-primary" type="button">5</button></td>
+                                    <td class="text-center" style="width: 110px;"><button onclick="append(6)" class="btn btn-primary" type="button">6</button></td>
+                                </tr>
+                                <tr class="flex-fill" style="text-align: left;font-size: 18px;">
+                                    <td class="text-center" style="width: 110px;"><button onclick="append(1)" class="btn btn-primary" type="button">1</button></td>
+                                    <td class="text-center" style="width: 110px;"><button onclick="append(2)" class="btn btn-primary" type="button">2</button></td>
+                                    <td class="text-center" style="width: 110px;"><button onclick="append(3)" class="btn btn-primary" type="button">3</button></td>
+                                </tr>
+                                <tr class="flex-fill" style="text-align: left;font-size: 18px;">
+                                    <td class="text-center" style="width: 110px;"><button onclick="cls()" class="btn btn-primary" type="button">AC</button></td>
+                                    <td class="text-center" style="width: 110px;"><button onclick="append(0)" class="btn btn-primary" type="button">0</button></td>
+                                    <td class="text-center" style="width: 110px;"><button class="record_crt btn btn-primary" type="button">Enter</button></td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="d-inline-flex flex-row justify-content-between align-content-center">
+                                <tr class="text-center"></tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer style="padding: 10px;height: 60px;">
+        <nav class="navbar navbar-expand fixed-bottom bg-secondary text-center d-flex flex-row align-content-end" style="background: transparent;width: 100%;height: 60px;">
+            <div class="container-fluid">
+                <ul class="navbar-nav text-start d-flex flex-fill justify-content-between align-items-center align-content-center align-items-sm-center">
+                    <li class="nav-item" style="position: relative;"><a class="nav-link active d-sm-flex" href="Accounting.html" style="position: static;">記帳</a></li>
+                    <li class="nav-item" style="position: relative;"><a class="nav-link" href="index.html">訂單管理</a></li>
+                    <li class="nav-item" style="position: relative;"><a class="nav-link" href="StatisticalAnalysis.html">統計分析</a></li>
+                </ul>
+            </div>
+        </nav>
+    </footer>
+</body>
+
+</html>
