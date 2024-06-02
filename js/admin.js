@@ -169,7 +169,6 @@ $(document).ready(function() {
         var people = $('#edit-booking-people').val();
         var phone = $('#edit-booking-phone').val();
         var other = $('#edit-booking-other').val();
-        alert("hi");
         $.ajax({
             url: 'http://localhost/backend/update_booking.php',
             type: 'POST',
@@ -177,15 +176,16 @@ $(document).ready(function() {
             data: JSON.stringify({ id: bookingId, time: time, name: name, people: people, phone: phone, other: other }),
             contentType: 'application/json; charset=utf-8',
             success: function(response) {
+                //alert(data.id);
                 if (response.success) {
                     $('#editBookingModal').modal('hide');
                     loadBookings();
+                    alert(response.message);
                 } else {
                     alert('更新失敗');
                 }
             }
         });
-        alert("bye");
     });
 
     $('#confirm-delete').on('click', function() {

@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($input['id'])) {
 
     $query = "UPDATE book SET `time` = ?, `name` = ?, `people` = ?, `phone` = ?, `other` = ? WHERE `indice` = ?";
     $stmt = $con->prepare($query);
-    $stmt->bind_param("i", $time, $name, $people, $phone, $other, $id);
+    $stmt->bind_param("ssissi", $time, $name, $people, $phone, $other, $id);
 
     if ($stmt->execute()) {
         echo json_encode(['success' => true, 'message' => '更新成功']);
