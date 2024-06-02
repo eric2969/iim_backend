@@ -12,20 +12,7 @@
     <link rel="stylesheet" href="assets/css/Navbar-Right-Links-Dark-icons.css">
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/theme.js"></script>
-    <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: 'http://localhost/backend/remember.php',
-                type: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    if (!response.logged_in) {
-                        window.location.href = 'admin_login.html';
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="../js/check_login.js"></script>
 </head>
 
 <body>

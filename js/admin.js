@@ -39,30 +39,4 @@ $(document).ready(function() {
             }
         });
     });
-
-    if (window.location.pathname.endsWith('notyet.html')) {
-        $.ajax({
-            url: 'http://localhost/backend/admin_dashboard.php',
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) {
-                    var bookingList = '<ul>';
-                    response.data.forEach(function(booking) {
-                        bookingList += '<li>' +
-                            '日期: ' + booking.date +
-                            ', 時間: ' + booking.time +
-                            ', 姓名: ' + booking.name +
-                            ', 人數: ' + booking.people +
-                            ', 其他: ' + booking.other +
-                            '</li>';
-                    });
-                    bookingList += '</ul>';
-                    $('#booking-list').html(bookingList);
-                } else {
-                    $('#booking-list').html(response.message);
-                }
-            }
-        });
-    }
 });
