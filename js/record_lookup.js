@@ -84,6 +84,10 @@ $(document).ready(function(){
             const config = {
                 type: 'line',
                 data: value,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                }
             };
             const myChart = new Chart(ctx, config);
         },
