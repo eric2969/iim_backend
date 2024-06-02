@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>查詢訂位 - 源本家燒肉火鍋</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="../js/book_lookup.js"></script> <!-- 引入 book_lookup.js 文件 -->
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="index.html">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <div class="sidebar-brand-text mx-3"><span>源本家燒肉火鍋</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>介紹</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html"><i class="fas fa-table"></i><span>菜單</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="reservation.html"><i class="fas fa-table"></i><span>訂位</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="lookup.html"><i class="fas fa-search"></i><span>查詢訂位</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4" style="margin-top: 10px;">查詢訂位</h3>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form id="lookup-form" method="post">
+                            <div class="form-group">
+                                <label for="phone">電話號碼:</label>
+                                <input type="text" class="form-control" id="phone" name="phone" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">查詢</button>
+                        </form>
+                        <div id="query-result" style="margin-top: 20px;"></div> <!-- 查詢結果顯示區域 -->
+                    </div>
+                </div>
+            </div>
+            <div style="display: none;" id="success">
+                <main>
+                    <div>
+                        <section class="d-flex justify-content-sm-center align-items-sm-center" style="margin: 20px;background: #ffffff;padding: 10px;text-align: center;color: rgb(131,132,135);">
+                            <h1 class="display-1" style="background: transparent;color: rgb(0,0,0);font-weight: bold;">訂位查詢成功</h1>
+                        </section>
+                        <section id="booking-info" class="d-flex justify-content-center align-items-sm-center" style="background: #ffffff;text-align: center;color: rgb(0,0,0);font-size: 30px;padding: 20px;">
+                            <!-- 查詢結果將在此顯示 -->
+                        </section>
+                        <section class="d-flex justify-content-center" style="margin: 20px;background: #ffffff;text-align: center;">
+                            <button class="btn btn-primary text-center d-flex d-sm-flex justify-content-center justify-content-sm-center align-items-sm-center" type="button" style="width: 90%;height: 70px;background: #545454;font-size: 30px;" onclick="location.href='index.html'">返回首頁</button>
+                        </section>
+                    </div>
+                </main>
+            </div>
+            <div style="display: none;" id="fail">
+                <main>
+                    <div>
+                        <section class="d-flex justify-content-sm-center align-items-sm-center" style="margin: 20px;background: #ffffff;padding: 10px;text-align: center;border-color: rgb(99,99,99);">
+                            <h1 class="display-1" style="background: transparent;color: rgb(0,0,0);font-weight: bold;">查詢失敗</h1>
+                        </section>
+                        <section id="fail-reason" class="d-flex justify-content-center align-items-sm-center" style="margin: 10px;background: #ffffff;text-align: center;color: rgb(0,0,0);font-size: 30px;padding: 10px;">
+                            <!-- 查詢失敗原因將在此顯示 -->
+                        </section>
+                        <section class="d-flex justify-content-center" style="margin: 20px;background: #ffffff;text-align: center;">
+                            <button class="btn btn-primary text-center d-flex d-sm-flex justify-content-center justify-content-sm-center align-items-sm-center" type="button" style="width: 90%;height: 70px;background: #545454;font-size: 30px;" onclick="location.href='index.html'">返回首頁</button>
+                        </section>
+                    </div>
+                </main>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2024</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+</body>
+
+</html>
