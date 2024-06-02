@@ -8,7 +8,7 @@
 
     $week = $_POST['week'];
 
-    for ($i = 40; $i >= 1; $i--) {
+    for ($i = 20; $i >= 1; $i--) {
         $query = "SELECT SUM(price) FROM money WHERE week = (?)";
         $main = $con->prepare($query);
         $par = $week - $i;

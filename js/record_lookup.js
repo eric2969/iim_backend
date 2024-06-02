@@ -47,7 +47,7 @@ $(document).ready(function(){
             var jdata = JSON.parse(data);
             console.log(jdata);
             //linear regression
-            const week = arrayRange(0, 40, 1);
+            const week = arrayRange(0, 20, 1);
             const week_data = dl.tensor1d(week);
             const sales_data = dl.tensor1d(jdata);
             //train param
@@ -63,9 +63,9 @@ $(document).ready(function(){
             const baPredict = ba.dataSync();
             //fetch data for chart
             valueData = []
-            for (let i = 36; i < 40; i++)
+            for (let i = 16; i < 20; i++)
                 valueData.push(jdata[i]);
-            for (let i = 40; i < 42; i++)
+            for (let i = 20; i < 22; i++)
                 valueData.push(parseFloat(i * awPredict + baPredict));
             console.log(valueData);
             //chart drawing
