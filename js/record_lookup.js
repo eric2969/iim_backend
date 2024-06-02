@@ -61,7 +61,7 @@ $(document).ready(function(){
             //fetch data for chart
             valueData = []
             for (let i = 16; i < 20; i++)
-                valueData.push(jdata[i]);
+                valueData.push((jdata[i]?jdata[i]:0));
             for (let i = 20; i < 22; i++)
                 valueData.push(parseFloat(i * awPredict + baPredict));
             //chart drawing
