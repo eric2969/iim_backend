@@ -9,7 +9,7 @@ $(document).ready(function(){
         var f_phone = $("#f_phone").val();
         var f_people = $("#f_people").val();
         var f_other = $("#f_other").val();
-        if(f_name == "" || f_people == ""){
+        if(f_name == "" || f_phone == ""){
             alert("請輸入個人資料!");
             return 0;
         }
