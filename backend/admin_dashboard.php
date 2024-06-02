@@ -13,11 +13,16 @@ $db_user = "iim";
 $db_pass = "fuckyou";
 $db_name = "iim";
 
+$date = $_POST['date'];
+
 $con = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 $con->query("SET NAMES 'utf8'");
 
-$query = "SELECT `indice`, `date`, `time`, `name`, `phone`, `people`, `other` FROM book";
-$result = $con->query($query);
+$query = "SELECT `indice`, `date`, `time`, `name`, `phone`, `people`, `other` FROM book where date = ?";
+$stmt = $con ->prepare($query);
+$stmt->bind_param("s", $date);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     $bookings = [];

@@ -11,10 +11,9 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-Right-Links-Dark-icons.css">
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/theme.js"></script>
     <script src="assets/js/more_ani.js"></script>
-    <script src="assets/js/admin.js"></script> <!-- 引入 admin.js 文件 -->
     <script src="../js/admin.js"></script>
+    <script src="../js/check_login.js"></script>
 </head>
 
 <body>
@@ -33,7 +32,7 @@
             <section style="margin: 10px;padding: 10px;margin-top: 5px;margin-bottom: 5px;">
                 <div class="container">
                     <div class="row d-flex">
-                        <div class="col d-flex align-items-center" style="font-size: 30px;"><input type="date"><button class="btn btn-primary d-flex align-items-center" type="button" style="margin-left: 30px; width: 60px;height: 40px;background: transparent;color: rgb(0,0,0);font-weight: bold;border-style: solid;border-color: rgb(0,94,181);" >確認</button></div>
+                        <div class="col d-flex align-items-center" style="font-size: 30px;"><input id="l_date" type="date" onchange="loadBookings()"></div>
                         <div class="col d-flex justify-content-end align-items-center"><button class="btn btn-primary d-flex align-items-center" type="button" style="width: 60px;height: 40px;background: transparent;color: rgb(0,0,0);font-weight: bold;border-style: solid;border-color: rgb(0,94,181);" onclick="location.href='AddOrder.html'">新增</button></div>
                     </div>
                 </div>
