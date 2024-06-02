@@ -1,29 +1,27 @@
 function append(num){$("#m_input").val($("#m_input").val() + num);}
 function cls(){$("#m_input").val("");}
 $(document).ready(function(){
+    let obj_Date = new Date();
+    $("#m_date").val(obj_Date.toISOString().split('T')[0]);
     Date.prototype.getWeek = function() {
         var dt = new Date(this.getFullYear(),0,1);
         return Math.ceil((((this - dt) / 86400000) + dt.getDay()+1)/7);
     };
     $(".record_crt").click(function(){
-        let obj_Date = new Date();
-        var year = obj_Date.getFullYear();
-        var month = obj_Date.getMonth();
-        var day = obj_Date.getDate();
-        let strDate = `${year}-${month}-${day}`;
+        var m_date = new Date($("#m_date").val());
+        var m_price = $("#m_input").val();
+        $("#m_input").val("");
         var hour = obj_Date.getHours();
         var minute = obj_Date.getMinutes();
         let strTime = `${hour}:${minute}`;
-        var m_price = $("#m_input").val();
-        $("#m_input").val("");
         $.ajax({
             type: "POST",
 			url: "http://localhost/backend/record_crt.php",
 			datatype: "json",
 			data:{
-				date: strDate,
-                month: month,
-                week: obj_Date.getWeek(),
+				date: m_date.toISOString().split('T')[0],
+                month: (m_date.getMonth()+1),
+                week: m_date.getWeek(),
                 time: strTime,
                 price: m_price,
 			},

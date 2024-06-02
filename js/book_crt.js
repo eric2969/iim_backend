@@ -20,14 +20,11 @@ $(document).ready(function(){
 			},
 			contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 			success: function(data) {
-                console.log(data);
                 $("#f_main").css('display','none');
                 if(data == "successful"){
-                    console.log("ok");
                     $("#success").css('display','block');
                 }
                 else if(data == "error"){
-                    console.log("error");
                     $("#fail").css('display','block');
                 }
                 else{

@@ -13,15 +13,14 @@ $(document).ready(function() {
                 if (response.success) {
                     var bookingInfo = '';
                     response.data.forEach(function(booking) {
-                        bookingInfo += '<p>日期: ' + booking.date + '</p>';
-                        bookingInfo += '<p>時間: ' + booking.time + '</p>';
-                        bookingInfo += '<p>姓名: ' + booking.name + '</p>';
-                        bookingInfo += '<p>人數: ' + booking.people + '</p>';
-                        bookingInfo += '<p>其他: ' + booking.other + '</p><hr>';
+                        bookingInfo += '<div>日期: ' + booking.date + '</div>';
+                        bookingInfo += '<div>時間: ' + booking.time + '</div>';
+                        bookingInfo += '<div>姓名: ' + booking.name + '</div>';
+                        bookingInfo += '<div>人數: ' + booking.people + '</div>';
+                        bookingInfo += '<div>其他: ' + booking.other + '</div>';
                     });
                     $('#booking-info').html(bookingInfo);
                     $('#success').show();
-                    alert("a")
                     //$("#success").css('display','block');
                     $('#fail').hide();
                 } else {
