@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-Right-Links-Dark-icons.css">
+    <script src="assets/js/jquery.min.js"></script>
     <script src="../js/check_login.js"></script>
+    <script src="../js/holiday.js"></script>
 </head>
 
 <body>
@@ -31,8 +33,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col d-flex align-items-center" style="padding: 10px;"><input type="date"></div>
-                    <div class="col d-flex justify-content-end align-items-center"><button class="btn btn-primary d-flex align-items-center" type="button" style="width: 60px;height: 40px;">確定</button></div>
+                    <div class="col d-flex align-items-center" style="padding: 10px;"><input id="h_date" type="date"></div>
+                    <div class="col d-flex justify-content-end align-items-center"><button id="h_btn" class="btn btn-primary d-flex align-items-center" type="button" style="width: 60px;height: 40px;">確定</button></div>
                 </div>
             </div>
         </div>
@@ -41,56 +43,7 @@
                 <div class="card-header py-3" style="width: 100%;height: 50px;background: rgba(37,37,37,0.03);">
                     <h6 class="text-primary fw-bold m-0">公休日</h6>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="row d-flex no-gutters">
-                            <div class="col d-flex me-2">
-                                <p class="d-flex" style="padding: 5px;">2024年</p>
-                            </div>
-                            <div class="col">
-                                <p style="padding: 5px;">6月</p>
-                            </div>
-                            <div class="col">
-                                <p style="padding: 5px;">32日</p>
-                            </div>
-                            <div class="col-auto" style="padding: 5px;">
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1"></label></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row d-flex no-gutters">
-                            <div class="col d-flex me-2">
-                                <p style="padding: 5px;">2024年</p>
-                            </div>
-                            <div class="col">
-                                <p style="padding: 5px;">6月</p>
-                            </div>
-                            <div class="col">
-                                <p style="padding: 5px;">33日</p>
-                            </div>
-                            <div class="col-auto" style="padding: 5px;">
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label" for="formCheck-3"></label></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row d-flex no-gutters">
-                            <div class="col d-flex me-2">
-                                <p style="padding: 5px;">2024年</p>
-                            </div>
-                            <div class="col">
-                                <p style="padding: 5px;">6月</p>
-                            </div>
-                            <div class="col">
-                                <p style="padding: 5px;">34日</p>
-                            </div>
-                            <div class="col-auto" style="padding: 5px;">
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2"></label></div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <ul id="h_list" class="list-group list-group-flush"></ul>
             </div>
         </div>
     </main>

@@ -3,14 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-06-02 16:14:47
+-- 產生時間： 2024-06-02 20:29:30
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
 GRANT ALL PRIVILEGES ON *.* TO `iim`@`localhost` IDENTIFIED BY PASSWORD '*951527F19014ABEFD0390B1409B4CCA97F86AE1F' WITH GRANT OPTION;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+08:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -29,17 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `indentity` int(11) NOT NULL,
+  `indices` int(11) NOT NULL,
   `username` text NOT NULL,
   `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- 傾印資料表的資料 `admins`
---
-
-INSERT INTO `admins` (`indentity`, `username`, `password`) VALUES
-(1, 'admin', '$2y$10$93ilvWmlarnGYMV.wEgVk.TMHu7GPgMFZjdIXWGF4mmuPGIiJTEya');
 
 -- --------------------------------------------------------
 
@@ -57,25 +50,16 @@ CREATE TABLE `book` (
   `other` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- 傾印資料表的資料 `book`
+-- 資料表結構 `holiday`
 --
 
-INSERT INTO `book` (`identity`, `date`, `time`, `name`, `phone`, `people`, `other`) VALUES
-(1, '2024-06-04', '01:34:00', '123', '1231', 12, '123'),
-(2, '2024-06-05', '03:05:00', '12', '123', 1, '1231'),
-(3, '2024-06-05', '02:09:00', '12', '123', 1, '1231'),
-(4, '0000-00-00', '00:00:00', '', '', 1, ''),
-(5, '2024-05-28', '04:09:00', '123', '213', 4, '21312'),
-(6, '0000-00-00', '00:00:00', '', '', 1, ''),
-(7, '0000-00-00', '00:00:00', '', '', 1, ''),
-(8, '0000-00-00', '00:00:00', '', '', 1, ''),
-(9, '0000-00-00', '00:00:00', '', '', 1, ''),
-(10, '2024-06-11', '06:13:00', '12231', '21312', 3, '1231'),
-(11, '2024-05-29', '20:36:00', '242', '4324', 4, '3r32r'),
-(12, '2024-06-03', '19:40:00', '張吐司', '0979829311', 1, '阿巴阿巴'),
-(13, '2024-05-27', '19:00:00', '主測試', '0912345678', 3, '阿巴阿巴'),
-(14, '2024-06-10', '20:01:00', '3424', '324', 1, '23');
+CREATE TABLE `holiday` (
+  `indices` int(11) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -97,38 +81,7 @@ CREATE TABLE `money` (
 --
 
 INSERT INTO `money` (`identity`, `date`, `month`, `week`, `time`, `price`) VALUES
-(1, '2024-05-02', 0, 23, '02:54:00', 2134),
-(2, '2024-05-02', 0, 23, '03:30:00', 0),
-(3, '2024-05-02', 0, 23, '03:30:00', 0),
-(4, '2024-05-02', 0, 23, '03:30:00', 3242342),
-(5, '2024-05-02', 0, 23, '03:32:00', 1243),
-(6, '2024-05-02', 0, 23, '03:32:00', 123),
-(7, '2024-05-02', 0, 23, '03:39:00', 0),
-(8, '2024-05-02', 0, 23, '03:40:00', 0),
-(9, '2024-05-02', 0, 23, '03:41:00', 741),
-(10, '2024-05-02', 5, 23, '03:45:00', 7485),
-(11, '2024-05-02', 5, 23, '03:47:00', 0),
-(12, '2024-05-02', 5, 23, '03:47:00', 0),
-(13, '2024-05-02', 5, 23, '03:47:00', 996),
-(14, '2024-05-02', 5, 23, '03:48:00', 7),
-(15, '2024-05-02', 5, 23, '03:48:00', 0),
-(16, '2024-05-02', 5, 23, '03:49:00', 0),
-(17, '2024-05-02', 5, 23, '04:49:00', 774411),
-(18, '2024-05-02', 5, 23, '18:24:00', 0),
-(19, '2024-05-02', 5, 23, '18:26:00', 0),
-(20, '2024-05-02', 5, 23, '18:26:00', 0),
-(21, '0000-00-00', 5, 23, '18:32:00', 0),
-(22, '2024-06-02', 6, 23, '18:33:00', 0),
-(23, '2024-06-02', 6, 23, '18:36:00', 741),
-(24, '2024-05-29', 5, 22, '18:42:00', 714555),
-(25, '2024-05-28', 5, 22, '18:42:00', 74520),
-(26, '2024-05-21', 5, 21, '18:42:00', 741),
-(27, '2024-05-13', 5, 20, '19:14:00', 7000000),
-(28, '2024-05-05', 5, 19, '19:17:00', 741000),
-(29, '2024-05-26', 5, 22, '19:17:00', 120000),
-(30, '2024-05-29', 5, 22, '19:18:00', 300000),
-(31, '2024-05-27', 5, 22, '19:18:00', 5000000),
-(32, '2024-04-30', 4, 18, '19:18:00', 100000000);
+(26, '2024-06-02', 6, 23, '01:52:00', 112222);
 
 --
 -- 已傾印資料表的索引
@@ -138,13 +91,19 @@ INSERT INTO `money` (`identity`, `date`, `month`, `week`, `time`, `price`) VALUE
 -- 資料表索引 `admins`
 --
 ALTER TABLE `admins`
-  ADD PRIMARY KEY (`indentity`);
+  ADD PRIMARY KEY (`indices`);
 
 --
 -- 資料表索引 `book`
 --
 ALTER TABLE `book`
   ADD PRIMARY KEY (`identity`);
+
+--
+-- 資料表索引 `holiday`
+--
+ALTER TABLE `holiday`
+  ADD PRIMARY KEY (`indices`);
 
 --
 -- 資料表索引 `money`
@@ -160,19 +119,25 @@ ALTER TABLE `money`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `indentity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `indices` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `book`
 --
 ALTER TABLE `book`
-  MODIFY `identity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `identity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `holiday`
+--
+ALTER TABLE `holiday`
+  MODIFY `indices` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `money`
 --
 ALTER TABLE `money`
-  MODIFY `identity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `identity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
