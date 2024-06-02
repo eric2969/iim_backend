@@ -15,6 +15,10 @@ $(document).ready(function(){
             alert("請輸入金額!");
             return 0;
         }
+        else if(m_price < 0){
+            alert("請輸入正數!");
+            return 0;
+        }
         var hour = obj_Date.getHours();
         var minute = obj_Date.getMinutes();
         let strTime = `${hour}:${minute}`;
