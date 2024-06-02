@@ -34,7 +34,7 @@ function loadBookings() {
                                             <td><p>${booking.name}</p></td>
                                             <td><p>${booking.people}</p></td>
                                             <td><button id="more_${index + 1}_btn" class="btn btn-primary" type="button" style="background: transparent;color: rgb(0,0,0);height: 40px;width: 30px;border-color: var(--bs-btn-bg);"><i class="fa fa-caret-right"></i></button></td>
-                                            <td><button class="btn btn-primary edit-booking" data-id="${booking.indice}" type="button" style="width: 60px;height: 40px;color: rgb(0,0,0);background: transparent;border-color: var(--bs-btn-bg);">修改</button></td>
+                                            <td><button class="btn btn-primary edit-booking" data-id="${booking.indice}" data-toggle="modal" data-target="#editBookingModal" type="button" style="width: 60px;height: 40px;color: rgb(0,0,0);background: transparent;border-color: var(--bs-btn-bg);">修改</button></td>
                                             <td><button class="btn btn-primary delete-booking" data-id="${booking.indice}" data-toggle="modal" data-target="#deleteConfirmModal" type="button" style="width: 60px;height: 40px;color: rgb(0,0,0);background: transparent;border-color: rgb(255,0,0);">刪除</button></td>
                                         </tr>
                                     </tbody>
@@ -77,6 +77,49 @@ function loadBookings() {
                 });
             } else {
                 $('#booking-list').html(response.message);
+            }
+        }
+    });
+}
+
+function editBooking(bookingId) {
+    // 顯示修改表單，這裡可以用模態框來顯示修改表單
+    // 假設這裡有一個模態框表單 #editBookingModal
+    $('#editBookingModal').data('id', bookingId).modal('show');
+    // 填充表單數據
+
+    $.ajax({
+        url: 'http://localhost/backend/get_booking.php',
+        type: 'GET',
+        dataType: 'json',
+        data: { id: bookingId },
+        success: function(response) {
+            if (response.success) {
+                $('#edit-booking-id').val(bookingId);
+                $('#edit-booking-time').val(response.data.time);
+                $('#edit-booking-name').val(response.data.name);
+                $('#edit-booking-people').val(response.data.people);
+                $('#edit-booking-phone').val(response.data.phone);
+                $('#edit-booking-other').val(response.data.other);
+            } else {
+                alert('無法加載訂單數據');
+            }
+        }
+    });
+}
+
+function deleteBooking(bookingId) {
+    $.ajax({
+        url: 'http://localhost/backend/delete_booking.php',
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify({ id: bookingId }),
+        contentType: 'application/json; charset=utf-8',
+        success: function(response) {
+            if (response.success) {
+                loadBookings();
+            } else {
+                alert('刪除失敗');
             }
         }
     });
@@ -139,31 +182,7 @@ $(document).ready(function() {
             }
         });
     }
-    function editBooking(bookingId) {
-        // 顯示修改表單，這裡可以用模態框來顯示修改表單
-        // 假設這裡有一個模態框表單 #editBookingModal
-        $('#editBookingModal').modal('show');
-        // 填充表單數據
-
-        $.ajax({
-            url: 'http://localhost/backend/get_booking.php',
-            type: 'GET',
-            dataType: 'json',
-            data: { id: bookingId },
-            success: function(response) {
-                if (response.success) {
-                    $('#edit-booking-id').val(response.data.id);
-                    $('#edit-booking-time').val(response.data.time);
-                    $('#edit-booking-name').val(response.data.name);
-                    $('#edit-booking-people').val(response.data.people);
-                    $('#edit-booking-phone').val(response.data.phone);
-                    $('#edit-booking-other').val(response.data.other);
-                } else {
-                    alert('無法加載訂單數據');
-                }
-            }
-        });
-    }
+    
 
     $('#edit-booking-form').on('submit', function(event) {
         event.preventDefault();
@@ -184,7 +203,6 @@ $(document).ready(function() {
                 if (response.success) {
                     $('#editBookingModal').modal('hide');
                     loadBookings();
-                    alert(response.message);
                 } else {
                     alert('更新失敗');
                 }
@@ -198,20 +216,5 @@ $(document).ready(function() {
         $('#deleteConfirmModal').modal('hide');
     });
 
-    function deleteBooking(bookingId) {
-        $.ajax({
-            url: 'http://localhost/backend/delete_booking.php',
-            type: 'POST',
-            dataType: 'json',
-            data: JSON.stringify({ id: bookingId }),
-            contentType: 'application/json; charset=utf-8',
-            success: function(response) {
-                if (response.success) {
-                    loadBookings();
-                } else {
-                    alert('刪除失敗');
-                }
-            }
-        });
-    }
+    
 });
