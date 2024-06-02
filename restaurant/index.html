@@ -10,6 +10,22 @@
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-Right-Links-Dark-icons.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'http://localhost/backend/remember.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    if (!response.logged_in) {
+                        window.location.href = 'admin_login.html';
+                    }
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -18,7 +34,7 @@
             <div class="container-fluid">
                 <ul class="navbar-nav text-start d-inline-flex flex-row flex-fill justify-content-between">
                     <li class="nav-item d-flex justify-content-sm-center align-items-sm-center"><a class="nav-link" href="Holiday.html"><i class="far fa-calendar-times"></i><span>公休設定</span></a></li>
-                    <li class="nav-item d-flex justify-content-sm-center align-items-sm-center"><a class="nav-link" href="#"><i class="far fa-arrow-alt-circle-right"></i><span>登出</span></a></li>
+                    <li class="nav-item d-flex justify-content-sm-center align-items-sm-center"><a class="nav-link" href="http://localhost/backend/logout.php"><i class="far fa-arrow-alt-circle-right"></i><span>登出</span></a></li>
                 </ul>
             </div>
         </nav>
