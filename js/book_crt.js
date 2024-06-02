@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    let objDate = new Date();
+    $("#f_date").val(objDate.toISOString().split('T')[0]);
+    $("#f_date").attr('min',objDate.toISOString().split('T')[0]);
     $("#book_crt").click(function(){
         var f_date = $("#f_date").val();
         var f_time = $("#f_time").val();
