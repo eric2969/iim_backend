@@ -216,5 +216,11 @@ $(document).ready(function() {
         $('#deleteConfirmModal').modal('hide');
     });
 
-    
+    $('#close-delete').on('click', function() {
+        $('#deleteConfirmModal').modal('hide');
+    });
+
+    $('#close-edit').on('click', function() {
+        $('#editBookingModal').modal('hide');
+    });
 });
