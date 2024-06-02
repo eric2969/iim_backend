@@ -60,13 +60,13 @@ $(document).ready(function(){
             const baPredict = ba.dataSync();
             //fetch data for chart
             valueData = []
-            for (let i = 16; i < 20; i++)
+            for (let i = 15; i < 20; i++)
                 valueData.push((jdata[i]?jdata[i]:0));
             for (let i = 20; i < 22; i++)
                 valueData.push(parseFloat(i * awPredict + baPredict));
             //chart drawing
             const ctx = $("#myChart");
-            const labels = ['前四周', '前三周','前二周', '前一周', '本周(預測)', '下一周(預測)'];
+            const labels = ['前五周', '前四周', '前三周','前二周', '前一周', '本周(預測)', '下一周(預測)'];
             const value = {
                 labels: labels,
                 datasets: [{
