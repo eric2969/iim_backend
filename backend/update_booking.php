@@ -20,15 +20,16 @@ $input = json_decode(file_get_contents('php://input'), true);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($input['id'])) {
     $id = $input['id'];
+    $date = $input['date'];
     $time = $input['time'];
     $name = $input['name'];
     $people = $input['people'];
     $phone = $input['phone'];
     $other = $input['other'];
 
-    $query = "UPDATE book SET `time` = ?, `name` = ?, `people` = ?, `phone` = ?, `other` = ? WHERE `indice` = ?";
+    $query = "UPDATE book SET `date` = ?, `time` = ?, `name` = ?, `people` = ?, `phone` = ?, `other` = ? WHERE `indice` = ?";
     $stmt = $con->prepare($query);
-    $stmt->bind_param("ssissi", $time, $name, $people, $phone, $other, $id);
+    $stmt->bind_param("sssissi", $date, $time, $name, $people, $phone, $other, $id);
 
     if ($stmt->execute()) {
         echo json_encode(['success' => true, 'message' => '更新成功']);

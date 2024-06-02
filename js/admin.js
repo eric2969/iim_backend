@@ -96,6 +96,7 @@ function editBooking(bookingId) {
         success: function(response) {
             if (response.success) {
                 $('#edit-booking-id').val(bookingId);
+                $('#edit-booking-date').val(response.data.date);
                 $('#edit-booking-time').val(response.data.time);
                 $('#edit-booking-name').val(response.data.name);
                 $('#edit-booking-people').val(response.data.people);
@@ -188,6 +189,7 @@ $(document).ready(function() {
         event.preventDefault();
         var bookingId = $('#edit-booking-id').val();
         var time = $('#edit-booking-time').val();
+        var date = $('#edit-booking-date').val();
         var name = $('#edit-booking-name').val();
         var people = $('#edit-booking-people').val();
         var phone = $('#edit-booking-phone').val();
@@ -196,10 +198,10 @@ $(document).ready(function() {
             url: 'http://localhost/backend/update_booking.php',
             type: 'POST',
             dataType: 'json',
-            data: JSON.stringify({ id: bookingId, time: time, name: name, people: people, phone: phone, other: other }),
+            data: JSON.stringify({ id: bookingId, date:date, time: time, name: name, people: people, phone: phone, other: other }),
             contentType: 'application/json; charset=utf-8',
             success: function(response) {
-                //alert(data.id);
+                alert("null");
                 if (response.success) {
                     $('#editBookingModal').modal('hide');
                     loadBookings();
