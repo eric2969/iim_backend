@@ -13,7 +13,8 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/more_ani.js"></script>
-    <script src="../js/check_login.js"></script>
+    <script src="assets/js/admin.js"></script> <!-- 引入 admin.js 文件 -->
+    <script src="../js/admin.js"></script>
 </head>
 
 <body>
@@ -37,74 +38,11 @@
                     </div>
                 </div>
             </section>
-            <section>
-                <div class="container" style="border-style: solid;padding: 20px;height: 20%;margin-top: 10px;margin-bottom: 10px;">
-                    <div class="row">
-                        <div class="col">
-                            <h1>訂單一</h1>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>時間</th>
-                                    <th>訂位人姓名</th>
-                                    <th>訂位人數</th>
-                                    <th>更多</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <p>12:00</p>
-                                    </td>
-                                    <td>
-                                        <p>Boots Trap</p>
-                                    </td>
-                                    <td>
-                                        <p>1</p>
-                                    </td>
-                                    <td><button id="more_1_btn" class="btn btn-primary" type="button" style="background: transparent;color: rgb(0,0,0);height: 40px;width: 30px;border-color: var(--bs-btn-bg);"><i class="fa fa-caret-right"></i></button></td>
-                                    <td><button class="btn btn-primary" type="button" style="width: 60px;height: 40px;color: rgb(0,0,0);background: transparent;border-color: var(--bs-btn-bg);">修改</button></td>
-                                    <td><button class="btn btn-primary" type="button" style="width: 60px;height: 40px;color: rgb(0,0,0);background: transparent;border-color: rgb(255,0,0);">刪除</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="more_1_div" class="card shadow" style="display: none;">
-                        <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">詳細</p>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <p>電話</p>
-                                    <p>0912 345 678</p>
-                                </div>
-                                <div class="col">
-                                    <p>備註</p>
-                                    <p>I'm Boot Strap</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <section id="booking-list" class="mt-3">
+                <!-- 訂單列表將動態生成並插入到這裡 -->
             </section>
         </div>
-        <div style="background: transparent;padding: 10px;">
-            <div class="container" style="background: #ffffff;width: 50%;padding: 10px;height: 150px;padding-top: 30px;border: 1px solid rgb(0,0,0) ;">
-                <div class="row">
-                    <div class="col d-flex justify-content-sm-center align-items-sm-center">
-                        <p style="color: rgb(0,0,0);">確定要刪除嗎?</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col d-flex justify-content-center justify-content-sm-center"><button class="btn btn-primary" type="button">確定</button></div>
-                    <div class="col d-flex d-sm-flex justify-content-sm-center"><button class="btn btn-primary" type="button">取消</button></div>
-                </div>
-            </div>
-        </div>
+        
     </main>
     <footer style="padding: 10px;height: 60px;">
         <nav class="navbar navbar-expand fixed-bottom bg-primary-subtle text-center d-flex flex-row align-content-end" style="background: transparent;width: 100%;height: 60px;">
@@ -117,6 +55,66 @@
             </div>
         </nav>
     </footer>
+    <div class="modal fade" id="editBookingModal" tabindex="-1" role="dialog" aria-labelledby="editBookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="edit-booking-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editBookingModalLabel">修改訂單</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="edit-booking-id">
+                        <div class="form-group">
+                            <label for="edit-booking-time">時間</label>
+                            <input type="time" class="form-control" id="edit-booking-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-booking-name">訂位人姓名</label>
+                            <input type="text" class="form-control" id="edit-booking-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-booking-people">訂位人數</label>
+                            <input type="number" class="form-control" id="edit-booking-people" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-booking-phone">電話</label>
+                            <input type="tel" class="form-control" id="edit-booking-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-booking-other">備註</label>
+                            <input type="text" class="form-control" id="edit-booking-other">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">保存變更</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmModalLabel">確認刪除</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>確定要刪除這個訂單嗎？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" id="confirm-delete" class="btn btn-primary">確定</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
 </body>
