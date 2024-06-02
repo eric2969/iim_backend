@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#yes").click(function(){
-        window.location.href = 'http://localhost/backend.html';
+        window.location.href = 'http://49.158.179.101/backend.html';
     })
     $("#cancel").click(function(){
         alert("hi")

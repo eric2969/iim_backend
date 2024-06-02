@@ -4,7 +4,7 @@ $(document).ready(function() {
         var phone = $('#phone').val();
 
         $.ajax({
-            url: 'http://localhost/backend/book_lookup.php',
+            url: 'http://49.158.179.101/backend/book_lookup.php',
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify({ phone: phone }),

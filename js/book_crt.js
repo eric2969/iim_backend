@@ -19,7 +19,7 @@ $(document).ready(function(){
         }
         $.ajax({
             type: "POST",
-			url: "http://localhost/backend/book_crt.php",
+			url: "http://49.158.179.101/backend/book_crt.php",
 			datatype: "json",
 			data:{
 				date: f_date,

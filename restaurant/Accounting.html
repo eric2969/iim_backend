@@ -24,7 +24,7 @@
             <div class="container-fluid">
                 <ul class="navbar-nav text-start d-inline-flex flex-row flex-fill justify-content-between">
                     <li class="nav-item d-flex justify-content-sm-center align-items-sm-center"><a class="nav-link" href="Holiday.html"><i class="far fa-calendar-times"></i><span>公休設定</span></a></li>
-                    <li class="nav-item d-flex justify-content-sm-center align-items-sm-center"><a class="nav-link" href="#"><i class="far fa-arrow-alt-circle-right"></i><span>登出</span></a></li>
+                    <li class="nav-item d-flex justify-content-sm-center align-items-sm-center"><a class="nav-link" href="http://localhost/backend/logout.php"><i class="far fa-arrow-alt-circle-right"></i><span>登出</span></a></li>
                 </ul>
             </div>
         </nav>
@@ -42,7 +42,7 @@
                             <p class="text-primary d-flex align-items-center m-0 fw-bold" style="font-size: 20px;">金額&nbsp; &nbsp;</p>
                         </div>
                         <div class="col d-flex d-sm-flex justify-content-sm-center align-items-sm-center"><input id="m_input" type="number" style="height: 40px;width: 150px;" min="0"></div>
-                        <div class="col d-flex d-sm-flex justify-content-end align-items-center justify-content-sm-center align-items-sm-center"><button class="record_crt btn btn-primary" type="button" style="margin: 10px;">Enter</button></div>
+                        <div class="col d-flex d-sm-flex justify-content-end align-items-center justify-content-sm-center align-items-sm-center"><button id="record_crt" class="btn btn-primary" type="button" style="margin: 10px;">Enter</button></div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -70,7 +70,7 @@
                                 <tr class="flex-fill" style="text-align: left;font-size: 18px;">
                                     <td class="cal text-center" onclick="cls()">AC</td>
                                     <td class="cal text-center" onclick="append(0)">0</td>
-                                    <td class="cal text-center record_crt">Enter</td>
+                                    <td class="cal text-center" onclick="remove()">BackSpace</td>
                                 </tr>
                             </tbody>
                         </table>
