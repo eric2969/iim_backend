@@ -43,7 +43,6 @@ $(document).ready(function(){
 		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
 		success: function(data) {
             var jdata = JSON.parse(data);
-            console.log(jdata);
             //linear regression
             const week = arrayRange(0, 20, 1);
             const week_data = dl.tensor1d(week);
@@ -65,7 +64,6 @@ $(document).ready(function(){
                 valueData.push(jdata[i]);
             for (let i = 20; i < 22; i++)
                 valueData.push(parseFloat(i * awPredict + baPredict));
-            console.log(valueData);
             //chart drawing
             const ctx = $("#myChart");
             const labels = ['前四周', '前三周','前二周', '前一周', '本周(預測)', '下一周(預測)'];
@@ -93,4 +91,26 @@ $(document).ready(function(){
             alert("error" + jqXHR.status);
         }
     })
+    $.ajax({
+        type: "POST",
+		url: "http://localhost/backend/today_trans.php",
+		datatype: "json",
+		data:{
+			date: strDate,
+		},
+		contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+		success: function(data) {
+            var jdata = JSON.parse(data);
+            var info = '<div class="col me-2"><h6 class="mb-0"><strong>時間</strong></h6><span class="text-xs">&emsp;&emsp;&emsp;&emsp;金額</span></div>';
+            jdata.forEach(function(trans){
+                info += '<div class="col me-2"> <h6 class="mb-0"><strong>';
+                info += trans.time + '</strong></h6><span class="text-xs">&emsp;&emsp;&emsp;&emsp;$';
+                info += trans.price + '</span></div>';
+            });
+            $('#invoice').html(info);
+        },
+        error: function(jqXHR) {
+            alert("error" + jqXHR.status);
+        }
+    })                          
 })
