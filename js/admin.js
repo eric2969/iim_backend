@@ -118,6 +118,7 @@ function deleteBooking(bookingId) {
         contentType: 'application/json; charset=utf-8',
         success: function(response) {
             if (response.success) {
+                alert("刪除成功");
                 loadBookings();
             } else {
                 alert('刪除失敗');
@@ -201,12 +202,12 @@ $(document).ready(function() {
             data: JSON.stringify({ id: bookingId, date:date, time: time, name: name, people: people, phone: phone, other: other }),
             contentType: 'application/json; charset=utf-8',
             success: function(response) {
-                alert("null");
                 if (response.success) {
+                    alert("更新成功!");
                     $('#editBookingModal').modal('hide');
                     loadBookings();
                 } else {
-                    alert('更新失敗');
+                    alert('更新失敗!');
                 }
             }
         });
