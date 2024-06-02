@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Navbar-Right-Links-Dark-icons.css">
     <script src="../js/check_login.js"></script>
+    <script src="../js/book_crt.js"></script>
 </head>
 
 <body>
@@ -35,149 +36,100 @@
                     </div>
                 </div>
             </section>
-            <section>
-                <section style="color: rgb(255,255,255);margin: 10px;padding: 10px;">
-                    <div class="container" style="padding-bottom: 20px;">
-                        <div class="row">
-                            <div class="col d-flex justify-content-start align-items-center">
-                                <p class="d-flex" style="color: rgb(0,0,0);">訂位日期</p>
-                            </div>
-                            <div class="col d-flex justify-content-start align-items-center">
-                                <p class="d-flex" style="color: rgb(0,0,0);">訂位時間</p>
-                            </div>
-                            <div class="col">
-                                <p style="color: rgb(0,0,0);">用餐人數</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <p style="color: rgb(0,0,0);">2024/06/31</p>
-                            </div>
-                            <div class="col"><input type="date"></div>
-                            <div class="col"><input type="number" min="1" max="4"></div>
-                        </div>
-                    </div>
-                </section>
-                <section style="margin: 10px;padding: 10px;">
-                    <div class="card">
-                        <div class="card-body" style="background: rgb(58,58,58);width: 100%;height: 100%;">
-                            <h1 style="color: rgb(255,255,255);padding: 5px;">訂位時間</h1>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr></tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>11:30</td>
-                                            <td>12:30</td>
-                                            <td>13:30</td>
-                                        </tr>
-                                        <tr>
-                                            <td>17:00</td>
-                                            <td>19:00</td>
-                                            <td>21:00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section style="margin: 20px;background: #ffffff;padding: 10px;">
-                    <div class="container" style="color: rgb(255,255,255);">
-                        <div class="row" style="margin: 10px;">
-                            <div class="col" style="color: rgb(0,0,0);">
-                                <h1 style="font-size: 24px;">聯絡資訊</h1>
-                            </div>
-                        </div>
-                        <div class="row d-flex align-items-sm-center" style="padding: 10px;color: rgb(0,0,0);">
-                            <div class="col d-flex align-items-sm-center">
-                                <p style="width: initial;">訂位人姓名</p>
-                            </div>
-                            <div class="col d-flex align-items-sm-center"><input type="text" style="width: 150px;height: 30px;border-style: solid;"></div>
-                        </div>
-                        <div class="row" style="padding: 10px;color: rgb(0,0,0);">
-                            <div class="col">
-                                <p>訂位人電話</p>
-                            </div>
-                            <div class="col d-flex align-items-sm-center"><input type="text" style="width: 150px;height: 30px;border-style: solid;"></div>
-                        </div>
-                        <div class="row" style="padding: 10px;color: rgb(0,0,0);">
-                            <div class="col">
-                                <p>備註</p>
-                            </div>
-                            <div class="col d-flex align-items-sm-center"><input type="text" style="height: 200px;width: 150px;border-style: solid;"></div>
-                        </div>
-                    </div>
-                </section>
-            </section>
-            <section>
-                <div class="container" style="border-style: solid;padding: 20px;height: 20%;margin-top: 10px;margin-bottom: 10px;">
-                    <div class="row">
-                        <div class="col">
-                            <h1>訂單預覽</h1>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>時間</th>
-                                    <th>訂位人姓名</th>
-                                    <th>訂位人數</th>
-                                    <th>更多</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <p>12:00</p>
-                                    </td>
-                                    <td>
-                                        <p>Boots Trap</p>
-                                    </td>
-                                    <td>
-                                        <p>1</p>
-                                    </td>
-                                    <td><button class="btn btn-primary" type="button" style="background: transparent;color: rgb(0,0,0);height: 40px;width: 30px;border-color: var(--bs-btn-bg);"><i class="fa fa-caret-right"></i></button></td>
-                                    <td><button class="btn btn-primary" type="button" style="width: 60px;height: 40px;color: rgb(0,0,0);background: transparent;border-color: var(--bs-btn-bg);">修改</button></td>
-                                    <td><button class="btn btn-primary" type="button" style="width: 60px;height: 40px;color: rgb(0,0,0);background: transparent;border-color: rgb(255,0,0);">刪除</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card shadow">
-                        <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">詳細</p>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
+        </div>
+        <div id="f_main">
+            <main>
+                <div>
+                    <section style="margin: 20px;background: #ffffff;padding: 10px;">
+                        <div class="container" style="color: rgb(255,255,255);">
+                            <div class="row" style="margin: 10px;">
                                 <div class="col">
-                                    <p>電話</p>
-                                    <p>0912 345 678</p>
+                                    <h1 style="color: rgb(0,0,0);">請輸入訂位資訊</h1>
                                 </div>
+                            </div>
+                            <div class="row" style="padding: 10px;color: rgb(0,0,0);">
+                                <div class="col">
+                                    <p style="color: rgb(0,0,0);">用餐人數</p>
+                                </div>
+                                <div class="col">
+                                    <input id="f_people" type="number" value="1"  min="1" max="4">
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 10px;color: rgb(0,0,0);">
+                                <div class="col">
+                                    <p>用餐日期</p>
+                                </div>
+                                <div class="col">
+                                    <input id="f_date" type="date">
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 10px;color: rgb(0,0,0);">
+                                <div class="col">
+                                    <p>用餐時間</p>
+                                </div>
+                                <div class="col">
+                                    <input id="f_time" type="time">
+                                </div>
+                            </div>
+                            <div style="display: none;"class="row" style="padding: 10px;">
+                                <div class="col d-flex justify-content-end"><button class="btn btn-primary text-start d-flex d-sm-flex justify-content-center justify-content-sm-center" type="button" style="width: 100px;height: 40px;background: rgb(58,58,58);font-weight: bold;border-width: 0.1px;border-color: rgb(255,0,0);">我要修改</button></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section style="margin: 20px;background: #ffffff;padding: 10px;">
+                        <div class="container" style="color: rgb(255,255,255);">
+                            <div class="row" style="margin: 10px;">
+                                <div class="col" style="color: rgb(0,0,0);">
+                                    <h1 style="font-size: 24px;">聯絡資訊</h1>
+                                </div>
+                            </div>
+                            <div class="row d-flex align-items-sm-center" style="padding: 10px;color: rgb(0,0,0);">
+                                <div class="col d-flex align-items-sm-center">
+                                    <p>訂位人姓名</p>
+                                </div>
+                                <div class="col d-flex align-items-sm-center"><input id="f_name" type="text" style="width: 150px;height: 30px;border-style: solid;"></div>
+                            </div>
+                            <div class="row" style="padding: 10px;color: rgb(0,0,0);">
+                                <div class="col">
+                                    <p>訂位人電話</p>
+                                </div>
+                                <div class="col d-flex align-items-sm-center"><input id="f_phone" type="text" style="width: 150px;height: 30px;border-style: solid;"></div>
+                            </div>
+                            <div class="row" style="padding: 10px;color: rgb(0,0,0);">
                                 <div class="col">
                                     <p>備註</p>
-                                    <p>I'm Boot Strap</p>
                                 </div>
+                                <div class="col d-flex align-items-sm-center"><input id="f_other" type="text" style="height: 200px;width: 150px;border-style: solid;"></div>
                             </div>
                         </div>
-                    </div>
+                    </section>
+                    <section class="d-flex justify-content-center" style="margin: 20px;background: #ffffff;"><button id="book_crt" class="btn btn-primary text-start d-flex d-sm-flex justify-content-center justify-content-sm-center" type="button" style="width: 90%;height: 70px;background: #4a4a4a;font-size: 40px;font-weight: bold;">完成訂位</button></section>
                 </div>
-            </section>
-            <section>
-                <div class="container">
-                    <div class="row">
-                        <div class="col d-flex justify-content-center"><button class="btn btn-primary d-flex align-items-center" type="button" style="width: 60px;height: 40px;background: transparent;color: rgb(0,0,0);font-weight: bold;border-style: solid;border-color: rgb(0,94,181);">確認</button></div>
-                        <div class="col d-flex justify-content-center"><button class="btn btn-primary d-flex align-items-center" type="button" style="width: 60px;height: 40px;background: transparent;color: rgb(0,0,0);font-weight: bold;border-style: solid;border-color: rgb(0,94,181);">取消</button></div>
-                    </div>
+            </main>
+        </div>
+        <div style="display: none;" id="success">
+            <main>
+                <div>
+                    <section class="d-flex justify-content-sm-center align-items-sm-center" style="margin: 20px;background: #ffffff;padding: 10px;text-align: center;color: rgb(131,132,135);">
+                        <h1 class="display-1" style="background: transparent;color: rgb(0,0,0);font-weight: bold;">訂位成功</h1>
+                    </section>
+                    <section class="d-flex justify-content-center" style="margin: 20px;background: #ffffff;text-align: center;"><button class="btn btn-primary text-center d-flex d-sm-flex justify-content-center justify-content-sm-center align-items-sm-center" type="button" style="width: 90%;height: 70px;background: #545454;font-size: 30px;" onclick="location.href='index.html'">返回首頁</button></section>
                 </div>
-            </section>
+            </main>
+        </div>
+        <div style="display: none;" id="fail">
+            <main>
+                <div>
+                    <section class="d-flex justify-content-sm-center align-items-sm-center" style="margin: 20px;background: #ffffff;padding: 10px;text-align: center;border-color: rgb(99,99,99);">
+                        <h1 class="display-1" style="background: transparent;color: rgb(0,0,0);font-weight: bold;">訂位失敗...</h1>
+                    </section>
+                    <section class="d-flex justify-content-center" style="margin: 20px;background: #ffffff;text-align: center;"><button class="btn btn-primary text-center d-flex d-sm-flex justify-content-center justify-content-sm-center align-items-sm-center" type="button" style="width: 90%;height: 70px;background: #545454;font-size: 30px;" onclick="location.href='index.html'">返回首頁</button></section>
+                </div>
+            </main>
         </div>
     </main>
     <footer style="padding: 10px;height: 60px;">
-        <nav class="navbar navbar-expand fixed-bottom bg-secondary text-center d-flex flex-row align-content-end" style="background: transparent;width: 100%;height: 60px;">
+        <nav class="navbar navbar-expand fixed-bottom bg-primary-subtle text-center d-flex flex-row align-content-end" style="background: transparent;width: 100%;height: 60px;">
             <div class="container-fluid">
                 <ul class="navbar-nav text-start d-flex flex-fill justify-content-between align-items-center align-content-center align-items-sm-center">
                     <li class="nav-item" style="position: relative;"><a class="nav-link active d-sm-flex" href="Accounting.html" style="position: static;">記帳</a></li>
