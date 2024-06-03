@@ -1,20 +1,74 @@
+limit = 12;
+table_time = ['11:30', '12:30', '13:30', '17:00', '19:00', '21:00'];
+time_ava = {
+    '11:30': 0,
+    '12:30': 0,
+    '13:30': 0,
+    '17:00': 0,
+    '19:00': 0,
+    '21:00': 0,
+};
+function book_confirm(indice){
+    console.log(indice);
+    if(time_ava[indice]){
+        $("#f_people").text($("#b_people").val());
+        $("#f_date").text($("#b_date").val());
+        $("#f_time").text(indice);
+        $("#f_main").css('display','block');
+    }
+}
 $(document).ready(function(){
     let objDate = new Date();
-    $("#f_date").val(objDate.toISOString().split('T')[0]);
-    $("#f_date").attr('min',objDate.toISOString().split('T')[0]);
+    $("#b_date").val(objDate.toISOString().split('T')[0]);
+    $("#b_date").attr('min',objDate.toISOString().split('T')[0]);
+    $("#b_btn").click(function(){
+        $("#f_main").css('display', 'none');
+        if($("#b_date").val() == "" || $("#b_people").val() == ""){
+            alert("請輸入訂位資訊");
+            return 0;
+        }
+        for(let i = 1; i <= 6 ;i++){
+            $.ajax({
+                url: 'http://49.158.179.101/backend/check_ava.php',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    date: $("#b_date").val(),
+                    time: table_time[i-1],
+                    limit: limit,
+                    people: $("#b_people").val(),
+                },
+                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                success: function(response) {
+                    console.log(response);
+                    if (response.message == "ava" ) {
+                        $("#t_" + i).css('background-color','green');
+                        time_ava[table_time[i-1]] = 1;
+                        return 0;
+                    }
+                    else if(response.message == "not_ava"){
+                        $("#t_" + i).css('background-color','red');
+                        time_ava[table_time[i-1]] = 0;
+                        return 0;
+                    }
+                },
+                error: function(jqXHR){
+                    alert("發生錯誤!");
+                    console.log(jqXHR);
+                }
+            });
+        }
+        $("#time_table").css('display','block');
+    })
     $("#book_crt").click(function(){
-        var f_date = $("#f_date").val();
-        var f_time = $("#f_time").val();
+        var f_date = $("#f_date").text();
+        var f_time = $("#f_time").text();
         var f_name = $("#f_name").val();
         var f_phone = $("#f_phone").val();
-        var f_people = $("#f_people").val();
+        var f_people = $("#f_people").text();
         var f_other = $("#f_other").val();
         if(f_name == "" || f_phone == ""){
             alert("請輸入個人資料!");
-            return 0;
-        }
-        else if(f_date == "" || f_time == ""){
-            alert("請輸入訂位資訊!");
             return 0;
         }
         $.ajax({
@@ -51,6 +105,7 @@ $(document).ready(function(){
                         contentType: "application/x-www-form-urlencoded;charset=UTF-8",
                         success: function(data) {
                             $("#f_main").css('display','none');
+                            $("#bruh").css('display','none');
                             if(data == "successful"){
                                 $("#success").css('display','block');
                             }
@@ -62,7 +117,8 @@ $(document).ready(function(){
                             }
                         },
                         error: function(jqXHR) {
-                            $("f_main").css('display','none');
+                            $("#f_main").css('display','none');
+                            $("#bruh").css('display','none');
                             $("#fail").css('display','block');
                             alert("error" + jqXHR.status + "\n");
                         }
