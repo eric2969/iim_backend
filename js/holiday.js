@@ -4,7 +4,7 @@ $(document).ready(function(){
     $("#h_date").attr('min',objDate.toISOString().split('T')[0]);
     $.ajax({
         type: "POST",
-        url: "http://49.158.179.101/backend/get_holiday.php",
+        url: "http://localhost/backend/get_holiday.php",
         datatype: "json",
         data:{
             date: (objDate.toISOString().split('T')[0]),
@@ -32,7 +32,7 @@ $(document).ready(function(){
         var m_date = $("#h_date").val();
         $.ajax({
             type: "POST",
-			url: "http://49.158.179.101/backend/crt_holiday.php",
+			url: "http://localhost/backend/crt_holiday.php",
 			datatype: "json",
 			data:{
 				date: m_date,

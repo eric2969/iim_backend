@@ -15,7 +15,7 @@ $(document).ready(function(){
     let strDate = obj_Date.toISOString().split('T')[0];
     $.ajax({
         type: "POST",
-		url: "http://49.158.179.101/backend/record_lookup.php",
+		url: "http://localhost/backend/record_lookup.php",
 		datatype: "json",
 		data:{
 			date: strDate,
@@ -35,7 +35,7 @@ $(document).ready(function(){
     })
     $.ajax({
         type: "POST",
-		url: "http://49.158.179.101/backend/chart_fetch.php",
+		url: "http://localhost/backend/chart_fetch.php",
 		datatype: "json",
 		data:{
             week: obj_Date.getWeek(),
@@ -93,7 +93,7 @@ $(document).ready(function(){
     })
     $.ajax({
         type: "POST",
-		url: "http://49.158.179.101/backend/today_trans.php",
+		url: "http://localhost/backend/today_trans.php",
 		datatype: "json",
 		data:{
 			date: strDate,

@@ -19,7 +19,9 @@ function book_confirm(indice){
 $(document).ready(function(){
     let objDate = new Date();
     $("#b_date").val(objDate.toISOString().split('T')[0]);
+    $("#f_date").val(objDate.toISOString().split('T')[0]);
     $("#b_date").attr('min',objDate.toISOString().split('T')[0]);
+    $("#f_date").attr('min',objDate.toISOString().split('T')[0]);
     $("#b_date").change(function(){ $("#f_main").css('display', 'none');  $("#time_table").css('display', 'none');})
     $("#b_people").change(function(){ $("#f_main").css('display', 'none');  $("#time_table").css('display', 'none');})
     $("#b_btn").click(function(){
@@ -31,57 +33,92 @@ $(document).ready(function(){
             alert("請輸入訂位資訊");
             return 0;
         }
-        for(let i = 1; i <= 6 ;i++){
-            $.ajax({
-                url: 'http://49.158.179.101/backend/check_ava.php',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    date: $("#b_date").val(),
-                    time: table_time[i-1],
-                    limit: limit,
-                    people: $("#b_people").val(),
-                },
-                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-                success: function(response) {
-                    console.log($("#b_date").val() < objDate.toISOString().split('T')[0]);
-                    if((table_time[i-1] <= strTime && $("#b_date").val() == objDate.toISOString().split('T')[0]) || $("#b_date").val() < objDate.toISOString().split('T')[0]){
-                        $("#t_" + i).css('background-color','#ff6666');
-                        time_ava[table_time[i-1]] = 0;
-                        return 0;
-                    }
-                    else if (response.message == "ava" ) {
-                        $("#t_" + i).css('background-color','#99ff99');
-                        time_ava[table_time[i-1]] = 1;
-                        return 0;
-                    }
-                    else if(response.message == "not_ava"){
-                        $("#t_" + i).css('background-color','#ff6666');
-                        time_ava[table_time[i-1]] = 0;
-                        return 0;
-                    }
-                },
-                error: function(jqXHR){
-                    alert("發生錯誤!");
-                    console.log(jqXHR);
+        $.ajax({
+            url: 'http://localhost/backend/check_holiday.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                date: $("#b_date").val(),
+            },
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            success: function(response) {
+                console.log(response);
+                if (response.message == "yes" ) {
+                    alert("當日為公休日!");
+                    return 0;
                 }
-            });
-        }
-        $("#time_table").css('display','block');
+                else if(response.message != "no"){
+                    alert('查詢失敗!');
+                    return 0;
+                }
+                else{
+                    for(let i = 1; i <= 6 ;i++){
+                        $.ajax({
+                            url: 'http://localhost/backend/check_ava.php',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                date: $("#b_date").val(),
+                                time: table_time[i-1],
+                                limit: limit,
+                                people: $("#b_people").val(),
+                            },
+                            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                            success: function(response) {
+                                console.log($("#b_date").val() < objDate.toISOString().split('T')[0]);
+                                if((table_time[i-1] <= strTime && $("#b_date").val() == objDate.toISOString().split('T')[0]) || $("#b_date").val() < objDate.toISOString().split('T')[0]){
+                                    $("#t_" + i).css('background-color','#ff6666');
+                                    time_ava[table_time[i-1]] = 0;
+                                    return 0;
+                                }
+                                else if (response.message == "ava" ) {
+                                    $("#t_" + i).css('background-color','#99ff99');
+                                    time_ava[table_time[i-1]] = 1;
+                                    return 0;
+                                }
+                                else if(response.message == "not_ava"){
+                                    $("#t_" + i).css('background-color','#ff6666');
+                                    time_ava[table_time[i-1]] = 0;
+                                    return 0;
+                                }
+                            },
+                            error: function(jqXHR){
+                                alert("發生錯誤!");
+                                console.log(jqXHR);
+                            }
+                        });
+                    }
+                    $("#time_table").css('display','block');
+                }
+            },
+            error: function(jqXHR){
+                console.log(jqXHR);
+            }
+        });
     })
     $("#book_crt").click(function(){
         var f_date = $("#f_date").text();
+        if(f_date == "")
+            f_date = $("#f_date").val();
         var f_time = $("#f_time").text();
+        if(f_time == "")
+            f_time = $("#f_time").val();
         var f_name = $("#f_name").val();
         var f_phone = $("#f_phone").val();
         var f_people = $("#f_people").text();
+        if(f_people == "")
+            f_people = $("#f_people").val();
         var f_other = $("#f_other").val();
+        if(f_date == "" || f_time == ""){
+            alert("請輸入訂位資料!");
+            return 0;
+        }
         if(f_name == "" || f_phone == ""){
             alert("請輸入個人資料!");
             return 0;
         }
         $.ajax({
-            url: 'http://49.158.179.101/backend/check_holiday.php',
+            url: 'http://localhost/backend/check_holiday.php',
             type: 'POST',
             dataType: 'json',
             data: {
@@ -101,7 +138,7 @@ $(document).ready(function(){
                 else{
                     $.ajax({
                         type: "POST",
-                        url: "http://49.158.179.101/backend/book_crt.php",
+                        url: "http://localhost/backend/book_crt.php",
                         datatype: "json",
                         data:{
                             date: f_date,

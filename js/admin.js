@@ -1,6 +1,6 @@
 function loadBookings() {
     $.ajax({
-        url: 'http://49.158.179.101/backend/admin_dashboard.php',
+        url: 'http://localhost/backend/admin_dashboard.php',
         type: 'POST',
         dataType: 'json',
         data:{
@@ -92,7 +92,7 @@ function editBooking(bookingId) {
     // 填充表單數據
 
     $.ajax({
-        url: 'http://49.158.179.101/backend/get_booking.php',
+        url: 'http://localhost/backend/get_booking.php',
         type: 'GET',
         dataType: 'json',
         data: { id: bookingId },
@@ -114,7 +114,7 @@ function editBooking(bookingId) {
 
 function deleteBooking(bookingId) {
     $.ajax({
-        url: 'http://49.158.179.101/backend/delete_booking.php',
+        url: 'http://localhost/backend/delete_booking.php',
         type: 'POST',
         dataType: 'json',
         data: JSON.stringify({ id: bookingId }),
@@ -133,13 +133,15 @@ $(document).ready(function() {
     let objDate = new Date();
     $("#l_date").val(objDate.toISOString().split('T')[0]);
     $("#l_date").attr('min',objDate.toISOString().split('T')[0]);
+    $("#edit-booking-date").val(objDate.toISOString().split('T')[0]);
+    $("#edit-booking-date").attr('min',objDate.toISOString().split('T')[0]);
     $('#admin-register-form').on('submit', function(event) {
         event.preventDefault();
         var username = $('#username').val();
         var password = $('#password').val();
 
         $.ajax({
-            url: 'http://49.158.179.101/backend/admin_register.php',
+            url: 'http://localhost/backend/admin_register.php',
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify({ username: username, password: password }),
@@ -160,7 +162,7 @@ $(document).ready(function() {
         var remember = $('#remember').is(':checked');
 
         $.ajax({
-            url: 'http://49.158.179.101/backend/admin_login.php',
+            url: 'http://localhost/backend/admin_login.php',
             type: 'POST',
             dataType: 'json',
             data: JSON.stringify({ username: username, password: password, remember: remember }),
@@ -175,7 +177,7 @@ $(document).ready(function() {
     });
     if (window.location.pathname.endsWith('order.html')) {
         $.ajax({
-            url: 'http://49.158.179.101/backend/remember.php',
+            url: 'http://localhost/backend/remember.php',
             type: 'GET',
             dataType: 'json',
             success: function(response) {
@@ -199,7 +201,7 @@ $(document).ready(function() {
         var phone = $('#edit-booking-phone').val();
         var other = $('#edit-booking-other').val();
         $.ajax({
-            url: 'http://49.158.179.101/backend/check_holiday.php',
+            url: 'http://localhost/backend/check_holiday.php',
             type: 'POST',
             dataType: 'json',
             data: {
@@ -221,7 +223,7 @@ $(document).ready(function() {
                 }
                 else{
                     $.ajax({
-                        url: 'http://49.158.179.101/backend/update_booking.php',
+                        url: 'http://localhost/backend/update_booking.php',
                         type: 'POST',
                         dataType: 'json',
                         data: JSON.stringify({ id: bookingId, date:date, time: time, name: name, people: people, phone: phone, other: other }),
