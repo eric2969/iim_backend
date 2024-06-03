@@ -20,7 +20,12 @@ $(document).ready(function(){
     let objDate = new Date();
     $("#b_date").val(objDate.toISOString().split('T')[0]);
     $("#b_date").attr('min',objDate.toISOString().split('T')[0]);
+    $("#b_date").change(function(){ $("#f_main").css('display', 'none');  $("#time_table").css('display', 'none');})
+    $("#b_people").change(function(){ $("#f_main").css('display', 'none');  $("#time_table").css('display', 'none');})
     $("#b_btn").click(function(){
+        let obj = new Date();
+        let strTime = obj.getHours() + ':' + obj.getMinutes();
+        console.log(strTime);
         $("#f_main").css('display', 'none');
         if($("#b_date").val() == "" || $("#b_people").val() == ""){
             alert("請輸入訂位資訊");
@@ -39,14 +44,19 @@ $(document).ready(function(){
                 },
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 success: function(response) {
-                    console.log(response);
-                    if (response.message == "ava" ) {
-                        $("#t_" + i).css('background-color','green');
+                    console.log($("#b_date").val() < objDate.toISOString().split('T')[0]);
+                    if((table_time[i-1] <= strTime && $("#b_date").val() == objDate.toISOString().split('T')[0]) || $("#b_date").val() < objDate.toISOString().split('T')[0]){
+                        $("#t_" + i).css('background-color','#ff6666');
+                        time_ava[table_time[i-1]] = 0;
+                        return 0;
+                    }
+                    else if (response.message == "ava" ) {
+                        $("#t_" + i).css('background-color','#99ff99');
                         time_ava[table_time[i-1]] = 1;
                         return 0;
                     }
                     else if(response.message == "not_ava"){
-                        $("#t_" + i).css('background-color','red');
+                        $("#t_" + i).css('background-color','#ff6666');
                         time_ava[table_time[i-1]] = 0;
                         return 0;
                     }
