@@ -18,7 +18,7 @@ $date = $_POST['date'];
 $con = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 $con->query("SET NAMES 'utf8'");
 
-$query = "SELECT `indice`, `date`, `time`, `name`, `phone`, `people`, `other` FROM book where date = ?";
+$query = "SELECT `indice`, `date`, `time`, `name`, `phone`, `people`, `other` FROM book where date = ? ORDER BY `time` ASC";
 $stmt = $con ->prepare($query);
 $stmt->bind_param("s", $date);
 $stmt->execute();
