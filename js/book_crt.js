@@ -9,7 +9,6 @@ time_ava = {
     '21:00': 0,
 };
 function book_confirm(indice){
-    console.log(indice);
     if(time_ava[indice]){
         $("#f_people").text($("#b_people").val());
         $("#f_date").text($("#b_date").val());
