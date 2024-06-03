@@ -5,7 +5,7 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(response) {
             if (!response.logged_in) {
-                window.location.href = 'admin_login.html';
+                window.location.href = 'index.html';
             }
         }
     });

@@ -1,5 +1,4 @@
 function loadBookings() {
-    console.log("ho");
     $.ajax({
         url: 'http://49.158.179.101/backend/admin_dashboard.php',
         type: 'POST',
@@ -78,6 +77,10 @@ function loadBookings() {
             } else {
                 $('#booking-list').html(response.message);
             }
+        },
+        error: function(jqXHR) {
+            alert("系統錯誤，代碼"+jqXHR.status+"\n");
+            console.log(jqXHR);
         }
     });
 }
@@ -165,12 +168,12 @@ $(document).ready(function() {
             success: function(response) {
                 $('#login-result').html(response.message);
                 if (response.success) {
-                    window.location.href = 'index.html';
+                    window.location.href = 'order.html';
                 }
             }
         });
     });
-    if (window.location.pathname.endsWith('index.html')) {
+    if (window.location.pathname.endsWith('order.html')) {
         $.ajax({
             url: 'http://49.158.179.101/backend/remember.php',
             type: 'GET',
@@ -196,19 +199,49 @@ $(document).ready(function() {
         var phone = $('#edit-booking-phone').val();
         var other = $('#edit-booking-other').val();
         $.ajax({
-            url: 'http://49.158.179.101/backend/update_booking.php',
+            url: 'http://49.158.179.101/backend/check_holiday.php',
             type: 'POST',
             dataType: 'json',
-            data: JSON.stringify({ id: bookingId, date:date, time: time, name: name, people: people, phone: phone, other: other }),
-            contentType: 'application/json; charset=utf-8',
+            data: {
+                date: date,
+            },
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
             success: function(response) {
-                if (response.success) {
-                    alert("更新成功!");
+                console.log(response);
+                if (response.message == "yes" ) {
+                    alert("當日為公休日!");
                     $('#editBookingModal').modal('hide');
                     loadBookings();
-                } else {
-                    alert('更新失敗!');
+                    return 0;
                 }
+                else if(response.message != "no"){
+                    alert('查詢失敗!');
+                    $('#editBookingModal').modal('hide');
+                    return 0;
+                }
+                else{
+                    $.ajax({
+                        url: 'http://49.158.179.101/backend/update_booking.php',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: JSON.stringify({ id: bookingId, date:date, time: time, name: name, people: people, phone: phone, other: other }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function(response) {
+                            if (response.success) {
+                                alert("更新成功!");
+                                $('#editBookingModal').modal('hide');
+                                loadBookings();
+                            } else {
+                                alert('更新失敗!');
+                                $('#editBookingModal').modal('hide');
+                            }
+                        }
+                    });
+                }
+            },
+            error: function(jqXHR){
+                console.log(jqXHR);
+                $('#editBookingModal').modal('hide');
             }
         });
     });

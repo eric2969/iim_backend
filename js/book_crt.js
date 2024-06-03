@@ -18,35 +18,60 @@ $(document).ready(function(){
             return 0;
         }
         $.ajax({
-            type: "POST",
-			url: "http://49.158.179.101/backend/book_crt.php",
-			datatype: "json",
-			data:{
-				date: f_date,
-                time: f_time,
-                name: f_name,
-                phone: f_phone,
-                people: f_people,
-                other: f_other,
-			},
-			contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-			success: function(data) {
-                $("#f_main").css('display','none');
-                if(data == "successful"){
-                    $("#success").css('display','block');
+            url: 'http://49.158.179.101/backend/check_holiday.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                date: f_date,
+            },
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            success: function(response) {
+                console.log(response);
+                if (response.message == "yes" ) {
+                    alert("當日為公休日!");
+                    return 0;
                 }
-                else if(data == "error"){
-                    $("#fail").css('display','block');
+                else if(response.message != "no"){
+                    alert('查詢失敗!');
+                    return 0;
                 }
                 else{
-                    console.log(data);
+                    $.ajax({
+                        type: "POST",
+                        url: "http://49.158.179.101/backend/book_crt.php",
+                        datatype: "json",
+                        data:{
+                            date: f_date,
+                            time: f_time,
+                            name: f_name,
+                            phone: f_phone,
+                            people: f_people,
+                            other: f_other,
+                        },
+                        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+                        success: function(data) {
+                            $("#f_main").css('display','none');
+                            if(data == "successful"){
+                                $("#success").css('display','block');
+                            }
+                            else if(data == "error"){
+                                $("#fail").css('display','block');
+                            }
+                            else{
+                                console.log(data);
+                            }
+                        },
+                        error: function(jqXHR) {
+                            $("f_main").css('display','none');
+                            $("#fail").css('display','block');
+                            alert("error" + jqXHR.status + "\n");
+                        }
+                    });
                 }
             },
-            error: function(jqXHR) {
-                $("f_main").css('display','none');
-                $("#fail").css('display','block');
-                alert("error" + jqXHR.status + "\n");
+            error: function(jqXHR){
+                console.log(jqXHR);
             }
-        })
+        });
     })
 });
