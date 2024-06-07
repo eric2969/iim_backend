@@ -1,5 +1,5 @@
 <?php
 session_start();
 session_destroy();
-header("Location: http://localhost/restaurant/index.html");
+header("Location: http://49.158.179.101/restaurant/index.html");
 ?>

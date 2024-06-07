@@ -34,7 +34,7 @@ $(document).ready(function(){
             return 0;
         }
         $.ajax({
-            url: 'http://localhost/backend/check_holiday.php',
+            url: 'http://49.158.179.101/backend/check_holiday.php',
             type: 'POST',
             dataType: 'json',
             data: {
@@ -54,7 +54,7 @@ $(document).ready(function(){
                 else{
                     for(let i = 1; i <= 6 ;i++){
                         $.ajax({
-                            url: 'http://localhost/backend/check_ava.php',
+                            url: 'http://49.158.179.101/backend/check_ava.php',
                             type: 'POST',
                             dataType: 'json',
                             data: {
@@ -118,7 +118,7 @@ $(document).ready(function(){
             return 0;
         }
         $.ajax({
-            url: 'http://localhost/backend/check_holiday.php',
+            url: 'http://49.158.179.101/backend/check_holiday.php',
             type: 'POST',
             dataType: 'json',
             data: {
@@ -138,7 +138,7 @@ $(document).ready(function(){
                 else{
                     $.ajax({
                         type: "POST",
-                        url: "http://localhost/backend/book_crt.php",
+                        url: "http://49.158.179.101/backend/book_crt.php",
                         datatype: "json",
                         data:{
                             date: f_date,
