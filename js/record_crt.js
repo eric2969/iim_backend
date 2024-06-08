@@ -35,7 +35,7 @@ $(document).ready(function(){
         let strTime = `${hour}:${minute}`;
         $.ajax({
             type: "POST",
-			url: "http://localhost/backend/record_crt.php",
+			url: "http://49.158.179.101/backend/record_crt.php",
 			datatype: "json",
 			data:{
 				date: m_date.toISOString().split('T')[0],
