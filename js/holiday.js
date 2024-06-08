@@ -30,6 +30,10 @@ $(document).ready(function(){
     })
     $("#h_btn").click(function(){
         var m_date = $("#h_date").val();
+        if(m_date == ""){
+            alert("請輸入日期!");
+            return 0;
+        }
         $.ajax({
             type: "POST",
 			url: "http://49.158.179.101/backend/crt_holiday.php",
