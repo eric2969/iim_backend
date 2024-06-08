@@ -6,7 +6,7 @@
     $con = mysqli_connect($db_host,$db_user,$db_pass,$db_name);
     $con -> query("SET NAMES 'utf8'");
 
-    $date = $_POST['date'];
+    /*$date = $_POST['date'];
 
     $query = "SELECT `date` FROM `holiday` WHERE date = ?";
     $main = $con->prepare($query);
@@ -27,5 +27,5 @@
         else{
             echo "error";
         }
-    }
+    }*/
 ?>
